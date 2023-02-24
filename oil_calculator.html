@@ -13,17 +13,35 @@
         <header>
             <h2 class="companyName">company name</h2>
             <nav class="navigation">
-                <a href="#">Profile</a>
-                <a href="#">Price Estimator</a>
+                <a href="profile.html">Profile</a>
+                <a href ="quote_history.html"> Quote History</a>
                 <button class="btnLogin">Login</button>
             </nav>
         </header>
         
         <div class = "wrapper">
-            <p>Desired gallons: </p>
-                <input type = "text" id = "numGallons"><br><span id = "numGallons_error"></span>
+            <style>
+                p1{text-align: left;}
+                label{float: left;}
+                span{
+                    display: block;
+                    overflow: hidden;
+                    padding: 0px 4px 0px 6px;
+                }
+            </style>
+            <label for="numGallons"> Desired Gallons:</label>
+                <span>
+                    <input name = "numGallons" id = "numGallons" type="text"/>
+                </span>
+            <p1>Delivery Date:</p1>
+                <input type = "date">
+            <br>
+            <p1> Price per gallon: </p1>
             <button class = "calcBtn" id = "btn"> Get fuel quote </button>
             <p id = "output"></p>
+            <br>
+            <hr>
+            <p> Total Amount Due: </p>
         </div>
 
         <div class="form-popup" id="login-form">
@@ -56,7 +74,7 @@
                 <input type="text" id="username" placeholder="Username" required pattern="(?=^.{4,32}$)(^[a-zA-Z0-9_]*$)">
                 <input type="password" id="password" placeholder="Password" required pattern="(?=^.{8,32}$)(^[\w\W]*$)">
                 <p>Don't have an account? <a href="#">Register</a></p>
-            </div>
-        </div>-->
+            </div>-->
+        </div>
     </body>
 </html>
