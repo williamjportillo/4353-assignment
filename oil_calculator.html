@@ -15,7 +15,7 @@
             <nav class="navigation">
                 <a href="profile.html">Profile</a>
                 <a href ="quote_history.html"> Quote History</a>
-                <button class="btnLogin">Login</button>
+                <button class="btnLogin" onclick="openLoginForm()">Login</button>
             </nav>
         </header>
         
@@ -68,12 +68,6 @@
                 document.getElementById("login-form").style.display = "none";
             }
         </script>
-        <!--<div class = "login-popup">
-            <div class="wrapper">
-                <input type="text" id="username" placeholder="Username" required pattern="(?=^.{4,32}$)(^[a-zA-Z0-9_]*$)">
-                <input type="password" id="password" placeholder="Password" required pattern="(?=^.{8,32}$)(^[\w\W]*$)">
-                <p>Don't have an account? <a href="#">Register</a></p>
-            </div>-->
         </div>
     </body>
 </html>
