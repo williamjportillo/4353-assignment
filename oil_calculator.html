@@ -53,14 +53,13 @@
           
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" required>
-          
-                <button type="submit" class="btn">Login</button>
-                <button type="button" href="#" class="btn" onclick="closeLoginForm()">Sign Up</button>
+
+                <button type="button" class="btn" onclick="window.location.href='profile.html';">Login</button>
+                <button type="button" class="btn" onclick="window.location.href='profile.html';">Sign Up</button>
                 <button type="button" class="btn cancel" onclick="closeLoginForm()">Close</button>
             </form>
         </div>
-
-       
+        
         <script>
             function openLoginForm() {
                 document.getElementById("login-form").style.display = "block";
