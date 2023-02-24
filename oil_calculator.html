@@ -12,14 +12,18 @@
         <header>
             <h2 class="companyName">company name</h2>
             <nav class="navigation">
-                <a href="#">Profile</a>
-                <a href="#">Price Estimator</a>
+                <a href="profile.html">Profile</a>
+                <a href="oil_calculator.html">Price Estimator</a>
                 <button class="btnLogin">Login</button>
             </nav>
         </header>
         <div class = "wrapper">
             <p>Desired gallons: </p>
                 <input type = "text" id = "numGallons"><br><span id = "numGallons_error"></span>
+            <p>Delivery Address: </p>
+                <input type = "text" id = "delAddress"><br><span id = "delAddress_error"></span>
+            <p>Delivery Date: </p>
+                <input type = "text" id = "delDate"><br><span id = "delDate"></span>
             <button class = "calcBtn" id = "btn"> Get fuel quote </button>
             <p id = "output"></p>
         </div>
