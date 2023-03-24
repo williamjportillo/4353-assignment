@@ -1,0 +1,82 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+    <title>oilPriceCalculator</title>
+    <link rel="stylesheet" href="{%static 'css/style.css' %}">
+</head>
+
+<body>
+    <header>
+        <h2 class="companyName">company name</h2>
+        <nav class="navigation">
+            <a href="{% url 'profile' %}">Profile</a>
+            <a href="{% url 'oil_calculator' %}">Price Estimator</a>
+        </nav>
+    </header>
+    <p class="table-name"> Quote History</p>
+    <table class="historyTable">
+        <thead>
+            <tr>
+                <th>Quote number</th>
+                <th>Gallons Requested</th>
+                <th>Date</th>
+                <th>Delivered To</th>
+                <th>Price per Gallon</th>
+                <th>Total Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+            </tr>
+            <tr>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+            </tr>
+            <tr>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+            </tr>
+            <tr>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+            </tr>
+            <tr>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+            </tr>
+
+
+
+
+        </tbody>
+    </table>
+
+</body>
+</html>

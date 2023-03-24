@@ -1,0 +1,80 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+    <title>oilPriceCalculator</title>
+    <link rel="stylesheet" href="{%static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <header>
+        <h2 class="companyName">company name</h2>
+        <nav class="navigation">
+            <a href="{% url 'profile' %}">Profile</a>
+            <a href="{% url 'quote_history' %}"> Quote History</a>
+            <button class="btnLogin" onclick="openLoginForm()">Login</button>
+        </nav>
+    </header>
+
+    <div class="wrapper">
+        <style>
+            p1 {
+                text-align: left;
+            }
+
+            label {
+                float: left;
+            }
+
+            span {
+                display: block;
+                overflow: hidden;
+                padding: 0px 4px 0px 6px;
+            }
+        </style>
+        <label for="numGallons"> Desired Gallons:</label>
+        <span>
+            <input name="numGallons" id="numGallons" type="text" />
+        </span>
+        <p1>Delivery Date:</p1>
+        <input type="date">
+        <br>
+        <p1> Price per gallon: </p1>
+        <button class="calcBtn" id="btn"> Get fuel quote </button>
+        <p id="output"></p>
+        <br>
+        <hr>
+        <p> Total Amount Due: </p>
+    </div>
+
+    <div class="form-popup" id="login-form">
+        <form action="/login" class="form-container">
+            <h1>Login</h1>
+
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <button type="button" class="btn" onclick="window.location.href='{% url 'profile' %}';">Login</button>
+            <button type="button" class="btn" onclick="window.location.href='{% url 'profile' %}';">Sign Up</button>
+            <button type="button" class="btn cancel" onclick="closeLoginForm()">Close</button>
+        </form>
+    </div>
+
+    <script>
+        function openLoginForm() {
+            document.getElementById("login-form").style.display = "block";
+        }
+        function closeLoginForm() {
+            document.getElementById("login-form").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

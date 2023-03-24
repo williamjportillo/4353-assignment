@@ -1,14 +1,15 @@
-*{
+* {
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
-header{
+
+header {
     position: fixed;
     top: 0%;
     left: 0%;
-    width:100%;
+    width: 100%;
     padding: 20px 50px;
     background-color: rgb(43, 46, 46);
     color: white;
@@ -16,12 +17,14 @@ header{
     justify-content: space-between;
     z-index: 99;
 }
-.companyName{
+
+.companyName {
     font-size: 2em;
-    color:white;
+    color: white;
     user-select: none;
 }
-.navigation a{
+
+.navigation a {
     position: relative;
     font-size: 1em;
     color: white;
@@ -29,7 +32,8 @@ header{
     font-weight: 500;
     margin-left: 40px;
 }
-.navigation .btnLogin{
+
+.navigation .btnLogin {
     width: 130px;
     height: 50px;
     border: 2px solid white;
@@ -40,26 +44,28 @@ header{
     font-weight: 500;
     margin-left: 40px;
 }
-body{
+
+body {
     margin: 0%;
     padding: 0%;
-    color:white;
-    background-color: white;    
-}
-span{
-    color: red;    
+    color: white;
+    background-color: white;
 }
 
-.wrapper{
+span {
+    color: red;
+}
+
+.wrapper {
     position: absolute;
     top: 45%;
-    left:50%;
-    transform:translate(-50%, -50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
     padding: 50px 125px;
     background: rgb(43, 46, 46);
     border-radius: 10px;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    float:left
+    float: left
 }
 
 .form-popup {
@@ -67,34 +73,34 @@ span{
     position: absolute;
     top: 45%;
     left: 50%;
-    transform:translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     background: rgb(43, 46, 46);
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     z-index: 9;
 }
-  
+
 /* Add styles to the form container */
 .form-container {
     max-width: 300px;
     padding: 10px;
     background-color: rgb(43, 46, 46);
 }
-  
-/* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    border: none;
-    background: #f1f1f1;
-}
-  
-/* When the inputs get focus, do something */
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-}
-  
+
+    /* Full-width input fields */
+    .form-container input[type=text], .form-container input[type=password] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        border: none;
+        background: #f1f1f1;
+    }
+
+        /* When the inputs get focus, do something */
+        .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
 /* Set a style for the submit/login button */
 .btn {
     background-color: #04AA6D;
@@ -103,15 +109,15 @@ span{
     border: none;
     cursor: pointer;
     width: 100%;
-    margin-bottom:10px;
+    margin-bottom: 10px;
     opacity: 0.8;
 }
-  
+
 /* Add a red background color to the cancel button */
 .form-container .cancel {
     background-color: red;
 }
-  
+
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
     opacity: 1;
@@ -129,13 +135,14 @@ input:invalid {
     padding-bottom: 5px;
 }
 
-input{
+input {
     outline: none;
     border: none;
     padding: 5px;
     margin: 10px;
 }
-.calcBtn{
+
+.calcBtn {
     color: white;
     padding: 10px;
     border: 2px solid white;
@@ -144,7 +151,8 @@ input{
     margin-top: 10%;
     cursor: pointer;
 }
-.table-name{
+
+.table-name {
     color: black;
     font-style: bold;
     margin-top: 10%;
@@ -152,7 +160,8 @@ input{
     font-size: 2em;
     font-weight: bold;
 }
-.historyTable{
+
+.historyTable {
     color: white;
     margin-left: auto;
     margin-right: auto;
@@ -167,11 +176,13 @@ input{
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     line-height: 70px;
 }
-.historyTable thead tr{
-    background-color: rgb(43, 46, 46);
-    color: white;
-    text-align: left;
-}
-.historyTable tbody{
-    border : 1px white;
-}
+
+    .historyTable thead tr {
+        background-color: rgb(43, 46, 46);
+        color: white;
+        text-align: left;
+    }
+
+    .historyTable tbody {
+        border: 1px white;
+    }
