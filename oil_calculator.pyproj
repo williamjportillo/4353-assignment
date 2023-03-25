@@ -3,6 +3,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>oil_calculator</Name>
     <RootNamespace>oil_calculator</RootNamespace>
+    <TestFramework>Pytest</TestFramework>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -30,6 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="manage.py" />
+    <Compile Include="oil_calculator\choices.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="oil_calculator\forms.py">
       <SubType>Code</SubType>
     </Compile>
