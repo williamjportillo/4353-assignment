@@ -1,0 +1,19 @@
+{% extends 'oil_calculator.html' %}
+
+{% block content %}
+
+<form method="POST" class="form-container" id="login-form" novalidate>
+	{% csrf_token %}
+	<h1>Log in</h1>
+	{{ form.as_p }}
+    <button type="submit" class="btn" onclick="window.location.href='profile.html';">Log in</button>
+    <button type="button" class="btn cancel" onclick="closeLoginForm()">Close</button>
+</form>
+
+<script>
+    function closeLoginForm() {
+        document.getElementById("login-form").style.display = "none";
+    }
+</script>
+
+{% endblock content%}
