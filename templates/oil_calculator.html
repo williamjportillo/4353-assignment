@@ -16,7 +16,7 @@
         <nav class="navigation">
             <a href="{% url 'profile' %}">Profile</a>
             <a href="{% url 'quote_history' %}"> Quote History</a>
-            <button class="btnLogin" onclick="openLoginForm()">Login</button>
+            <a href="/login" class="btnLogin">Login</a>
         </nav>
     </header>
 
@@ -51,23 +51,19 @@
         <p> Total Amount Due: </p>
     </div>
 
+    <!--
     <div class="form-popup" id="login-form">
         <form action="/login" class="form-container">
             <h1>Login</h1>
             <form method="post" action="{% url 'login' %}">
-                  {% csrf_token %}
+                {% csrf_token %}
                 {{form.as_p}}
-            <!--<label for="username"><b>Username</b></label>
-            <input type="text" placeholder="Enter Email" name="email" required>
-
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
-                -->
-            <button type="submit" class="btn" onclick="window.location.href='{% url 'profile' %}';">Login</button> 
-            <!--<button type="button" class="btn" onclick="window.location.href='{% url 'profile' %}';">Sign Up</button>
-            <button type="button" class="btn cancel" onclick="closeLoginForm()">Close</button> -->
+            <button type="submit" class="btn" onclick="window.location.href='profile.html'">Login</button> 
+            <button type="button" class="btn" onclick="window.location.href='profile.html'">Sign Up</button>
+            <button type="button" class="btn cancel" onclick="closeLoginForm()">Close</button>
         </form>
     </div>
+    
 
     <script>
         function openLoginForm() {
@@ -77,6 +73,7 @@
             document.getElementById("login-form").style.display = "none";
         }
     </script>
+    -->
 
 </body>
 </html>

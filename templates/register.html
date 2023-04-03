@@ -1,0 +1,19 @@
+{% extends 'oil_calculator.html' %}
+
+{% block content %}
+
+<form method="POST" class="form-container" id="sign-up-form" novalidate>
+	{% csrf_token %}
+	<h1>Sign Up</h1>
+	{{ form.as_p }}
+    <button type="submit" class="btn" onclick="window.location.href='profile.html';">Sign Up</button>
+    <button type="button" class="btn cancel" onclick="closeSignUpForm()">Close</button>
+</form>
+
+<script>
+    function closeSignUpForm() {
+        document.getElementById("sign-up-form").style.display = "none";
+    }
+</script>
+
+{% endblock content%}

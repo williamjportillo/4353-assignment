@@ -18,20 +18,20 @@ Including another URLconf
 
 # Uncomment next two lines to enable admin:
 #from django.contrib import admin
-from cgitb import html
-import profile
+#from cgitb import html
 from django.urls import path
+#from django.contrib.auth import views as auth_views
+#from django.contrib.auth.views import LoginView
+#from django.contrib.auth.forms import AuthenticationForm
 from . import views
-from django.contrib.auth import views as auth_views
-from django.contrib.auth.views import LoginView
-from django.contrib.auth.forms import AuthenticationForm
 
 urlpatterns = [
     # Uncomment the next line to enable the admin:
     #path('admin/', admin.site.urls)
-    path('', views.home, name = 'oil_calculator'),
-    path('profile/', views.profile, name = 'profile'),
-    path('quote_history/', views.quote_history, name = 'quote_history'),
-    path('login/', auth_views.LoginView.as_view(template_name = 'empty.html', authentication_form = AuthenticationForm), name = 'login'),
-    path('logout/', auth_views.LogoutView.as_view(),name = 'logout')
+    path('', views.home, name='oil_calculator'),
+    path('profile/', views.profile, name='profile'),
+    path('quote_history/', views.quote_history, name='quote_history'),
+    path('register/', views.register, name='register'),
+    path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout')
 ]
