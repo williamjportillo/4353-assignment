@@ -16,44 +16,16 @@ from django.core.validators import EmailValidator
 class LoginForm(forms.Form):
     email = forms.EmailField(max_length=50, required=True, validators= [EmailValidator()])
     password = forms.CharField(widget=forms.PasswordInput, required=True)
-
-    def clean(self):
-        cleaned_data = super().clean()
-        email = cleaned_data.get('email')
-        password = cleaned_data.get('password')
-
-        if email and password:
-            user = Profile.objects.filter(email = email).first()
-
-            if not user:
-                raise forms.ValidationError('Invalid email address')
-
-            elif not check_password(password, Profile.password):
-                raise forms.ValidationError('Invalid password')
-         
-        return cleaned_data
     
 class RegisterForm(UserCreationForm):
 
-    class Meta:
+    class Meta(UserCreationForm.Meta):
         model = Profile
         fields = ['email', 'password']
         widgets = {
             'email': forms.EmailField(max_length= 50, validators = [EmailValidator()]),
             'password': forms.CharField(widget = forms.PasswordInput)
         }
-
-    def clean(self):
-        cleaned_data  = super().clean
-        email = cleaned_data.get('email')
-        password = cleaned_data.get('password')
-
-        if Profile.objects.filter(email = email).exists():
-            raise forms.ValidationError('Email is already taken')
-        if len(password) < 8:
-            raise forms.ValidationError('Password must be atleast 8 characters')
-
-        return cleaned_data
 
     """def clean(self):
         super(RegisterForm, self).clean()
@@ -69,17 +41,9 @@ class RegisterForm(UserCreationForm):
     #def validate():
         #self._errors['password'] = self.validate
 
-    def save(self, commit=True):
-        user = super(RegisterForm, self).save(commit=False)
-        user.email = self.cleaned_data['email']
-        user.hashed_password = make_password(self.cleaned_data['password'])
-        if commit:
-            user.save()
-        return user
-
-
 class ManageProfileForm(UserChangeForm):
-    class Meta:
+
+    class Meta(UserChangeForm.Meta):
         model = Profile
         fields = ['first_name', 'last_name', 'address1', 'address2', 'city',  'state', 'zipcode']
         widgets = {
