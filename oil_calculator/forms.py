@@ -1,13 +1,37 @@
+from dataclasses import fields
+from datetime import datetime
+from distutils.command.clean import clean
+from unittest.util import _MAX_LENGTH
+from xml.dom import ValidationErr
+import zipapp
+import zipfile
+import zipimport
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.hashers import make_password, check_password
 from .models import Profile
 from .choices import STATE_CHOICES
-
+from django.core.validators import EmailValidator
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(max_length=50, required=True)
+    email = forms.EmailField(max_length=50, required=True, validators= [EmailValidator()])
     password = forms.CharField(widget=forms.PasswordInput, required=True)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        email = cleaned_data.get('email')
+        password = cleaned_data.get('password')
+
+        if email and password:
+            user = Profile.objects.filter(email = email).first()
+
+            if not user:
+                raise forms.ValidationError('Invalid email address')
+
+            elif not check_password(password, Profile.password):
+                raise forms.ValidationError('Invalid password')
+         
+        return cleaned_data
     
 class RegisterForm(UserCreationForm):
 
@@ -15,9 +39,21 @@ class RegisterForm(UserCreationForm):
         model = Profile
         fields = ['email', 'password']
         widgets = {
-            'email': forms.TextInput(),
-            'password': forms.PasswordInput()
+            'email': forms.EmailField(max_length= 50, validators = [EmailValidator()]),
+            'password': forms.CharField(widget = forms.PasswordInput)
         }
+
+    def clean(self):
+        cleaned_data  = super().clean
+        email = cleaned_data.get('email')
+        password = cleaned_data.get('password')
+
+        if Profile.objects.filter(email = email).exists():
+            raise forms.ValidationError('Email is already taken')
+        if len(password) < 8:
+            raise forms.ValidationError('Password must be atleast 8 characters')
+
+        return cleaned_data
 
     """def clean(self):
         super(RegisterForm, self).clean()
@@ -55,7 +91,32 @@ class ManageProfileForm(UserChangeForm):
             'state': forms.TextInput(attrs={'choices': STATE_CHOICES, 'required': True}),
             'zipcode': forms.TextInput(attrs={'required': True})
         }
-    
+
+        def clean(self):
+            cleaned_data = super().clean()
+            first_name = cleaned_data.get('first_name')
+            last_name = cleaned_data.get('last_name')
+            address1 = cleaned_data.get('address1')
+            address2 = cleaned_data.get('address2')
+            city = cleaned_data.get('city')
+            zippcode = cleaned_data.get('zipcode')
+
+
+            if not first_name.isalpha():
+                raise forms.ValidationError('First name should only contain letters')
+            if not last_name.isalpha():
+                raise forms.ValidationError('Last name should only contain letters')
+            if not address1.isalnum():
+                raise forms.ValidationError('Address should not contain any symbols')
+            if not address2.isalnum():
+                raise forms.ValidationError('Address should not contain any symbols')
+            if not city.isalpha():
+                raise forms.ValidationError('City should only contain letters')
+            if not zipcode.isdigit():
+                raise forms.ValidationError('Zip should only contain numbers')
+
+            return cleaned_data
+
     """def save(self, commit=True):
         user = super(UserChangeForm, self).save(commit=False)
         user.first_name = self.cleaned_data['first_name']
@@ -72,3 +133,13 @@ class ManageProfileForm(UserChangeForm):
 class QuoteRequestForm(forms.Form):
     gallons_requested = forms.DecimalField(max_digits=7, decimal_places=2, label='Gallons Requested')
     delivery_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label='Delivery Date')
+
+    def clean(self):
+        cleaned_data = super().clean()
+        delivery_date = cleaned_data.get('delivery_date')
+        gallons_requested  = cleaned_data.get('gallons_requested')
+
+        if date < datetime.date.today():
+            raise forms.ValidationError("Date cannot be in the past")
+        if gallons_requested <= 0:
+            raise forms.ValidationError("Enter a positive number")
