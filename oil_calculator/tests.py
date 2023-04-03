@@ -1,7 +1,6 @@
 from django.test import TestCase
-from forms import *
-from models import *
-from django.urls
+from .forms import *
+from .models import *
 from django.urls import reverse
 
 class loginTest(TestCase):
@@ -45,7 +44,7 @@ class profileTest(TestCase):
         self.assertEqual(self.profile.state, 'TX')
         self.assertEqual(self.profile.zipcode, '12345')
 class fuel_quoteTest(TestCase):
-        def setUp(self):
+    def setUp(self):
         self.profile = profile.objects.create(
             user_address1="123 Main St",
             city="Houston",

@@ -14,8 +14,16 @@
     <header>
         <h2 class="companyName">company name</h2>
         <nav class="navigation">
-            <a href="{% url 'profile' %}">Profile</a>
             <a href="{% url 'oil_calculator' %}">Price Estimator</a>
+            {% block content %}
+            {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}">Profile</a>
+                <a href="{% url 'logout' %}">Log Out</a>
+            {% else %}
+                <a href="{% url 'login' %}">Log In</a>
+                <a href="{% url 'signup' %}">Sign Up</a>
+            {% endif %}
+            {% endblock %}
         </nav>
     </header>
     <p class="table-name"> Quote History</p>

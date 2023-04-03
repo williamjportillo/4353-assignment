@@ -1,4 +1,3 @@
-
 STATE_CHOICES = (
     ('AL', 'Alabama'),
     ('AK', 'Alaska'),
