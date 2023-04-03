@@ -4,10 +4,11 @@ from django.forms import ModelForm, ChoiceField
 from unicodedata import decimal
 from .choices import STATE_CHOICES
 
-    
+
 class Profile(models.Model):
+    USERNAME_FIELD='email'
     user = models.OneToOneField(User, on_delete = models.CASCADE)
-    email = models.CharField(max_length=50, blank=False, null=False)
+    email = models.CharField(max_length=50, primary_key=True, blank=False, null=False)
     password = models.CharField(max_length=128, blank=False, null=False)
     first_name = models.CharField(max_length=25, blank=False, null=True)
     last_name = models.CharField(max_length=25, blank=False, null=True)

@@ -9,9 +9,9 @@ class LoginForm(forms.Form):
     email = forms.EmailField(max_length=50, required=True)
     password = forms.CharField(widget=forms.PasswordInput, required=True)
     
-class RegisterForm(UserCreationForm):
+class SignUpForm(UserCreationForm):
 
-    class Meta:
+    class Meta(UserCreationForm.Meta):
         model = Profile
         fields = ['email', 'password']
         widgets = {
@@ -19,31 +19,10 @@ class RegisterForm(UserCreationForm):
             'password': forms.PasswordInput()
         }
 
-    """def clean(self):
-        super(RegisterForm, self).clean()
-        for field, data in self.cleaned_data:
-            if len(data) > data.max_length:
-                self._errors[field] = self.error_class(['Cannot exceed length of {}'.format(data.max_length)])
-            if len(data) < data.min_length:
-                self._errors[field] = self.error_class(['Minimum {} characters required'.format(data.min_length)])
-        validation_regexs = {
-            'email': '[a-zA-Z0-9]'
-        }
-        email=self.cleaned_data"""
-    #def validate():
-        #self._errors['password'] = self.validate
-
-    def save(self, commit=True):
-        user = super(RegisterForm, self).save(commit=False)
-        user.email = self.cleaned_data['email']
-        user.hashed_password = make_password(self.cleaned_data['password'])
-        if commit:
-            user.save()
-        return user
-
 
 class ManageProfileForm(UserChangeForm):
-    class Meta:
+
+    class Meta(UserChangeForm.Meta):
         model = Profile
         fields = ['first_name', 'last_name', 'address1', 'address2', 'city',  'state', 'zipcode']
         widgets = {
