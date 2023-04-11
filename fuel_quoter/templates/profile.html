@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block navbar %}
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'quote_history' %}">Quote History</a>
+{% endblock navbar %}
+
+{% block content %}
+    <p>{{ message }}</p>
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="submit" >Update profile</button>
+    </form>
+{% endblock content %}

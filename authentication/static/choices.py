@@ -1,4 +1,4 @@
-STATE_CHOICES = (
+STATE_CODES = (
     ('AL', 'Alabama'),
     ('AK', 'Alaska'),
     ('AZ', 'Arizona'),

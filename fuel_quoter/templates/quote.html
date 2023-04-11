@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+    <table class="dataTable", id="quote-table">
+        <thead class="thead-light", id="quote-table-data">
+            <tr>
+                <th class="text-field" scope="col", tabindex="0", rowspan="1", colspan="1">Delivery Date</th>
+                <th class="text-field" scope="col", tabindex="0", rowspan="1", colspan="1">Delivery Address</th>
+                <th class="number-field" scope="col", tabindex="0", rowspan="1", colspan="1">Gallons Requested</th>
+                <th class="number-field" scope="col", tabindex="0", rowspan="1", colspan="1">Price Per Gallon</th>
+                <th class="number-field" scope="col", tabindex="0", rowspan="1", colspan="1">Total Amount Due</th>
+            </tr>
+            <tr> 
+                <td class="text-field">{{ fuel_quote.delivery_date }}</td>
+                <td class="text-field">
+                    <p>{{ fuel_quote.address1 }}</p>
+                    <p>{{ fuel_quote.address2 }}</p>
+                    <p>{{ fuel_quote.city }}, {{ fuel_quote.state }} {{ fuel_quote.zipcode }}</p>
+                </td>
+                <td class="number-field">{{ fuel_quote.gallons_requested }}</td>
+                <td class="number-field">${{ fuel_quote.price_rate }}</td>
+                <td class="number-field">${{ fuel_quote.total_due }}</td>
+            </tr>
+        </thead>
+    </table>
+{% endblock content %}

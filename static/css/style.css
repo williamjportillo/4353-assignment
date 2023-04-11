@@ -18,7 +18,7 @@ header {
     z-index: 99;
 }
 
-.companyName {
+.logo {
     font-size: 2em;
     color: white;
     user-select: none;
@@ -56,100 +56,109 @@ span {
     color: red;
 }
 
-.wrapper {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 50px 125px;
-    background: rgb(43, 46, 46);
-    border-radius: 10px;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    float: left
+.content-wrapper {
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 200px;
+    display: flex;
+    padding: 2rem 0rem;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    color: rgb(39, 26, 56);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    box-shadow: none;
+    outline-color: #7451eb;
 }
 
-.form-popup {
-    display: none;
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgb(43, 46, 46);
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    z-index: 9;
+form {
+    width: 350px;
 }
 
-/* Add styles to the form container */
-.form-container {
-    max-width: 300px;
-    padding: 10px;
-    background-color: rgb(43, 46, 46);
+form p {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 
-    /* Full-width input fields */
-    .form-container input[type=text], .form-container input[type=password] {
-        width: 100%;
-        padding: 15px;
-        margin: 5px 0 22px 0;
-        border: none;
-        background: #f1f1f1;
-    }
+form p input {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    height: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    box-sizing: content-box;
+}
 
-        /* When the inputs get focus, do something */
-        .form-container input[type=text]:focus, .form-container input[type=password]:focus {
-            background-color: #ddd;
-            outline: none;
-        }
-
-/* Set a style for the submit/login button */
-.btn {
-    background-color: #04AA6D;
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
+form button {
+    margin-top: 8px;
+    margin-bottom: 8px;
     width: 100%;
-    margin-bottom: 10px;
-    opacity: 0.8;
+    height: 35px;
+    border-radius: 3px;
+    color: white;
+    border-color: rgb(45, 160, 60);
+    background-color: rgb(45, 160, 60);
 }
 
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-    background-color: red;
-}
-
-/* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
-    opacity: 1;
+form button:hover {
+    border-color: rgb(60, 180, 70);
+    background-color: rgb(60, 180, 70);
 }
 
 input:invalid {
-    border-bottom: 2px dashed red;
+    background-color: rgb(255, 220, 220);
 }
 
-.horizontal-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+table {
+    width: 100%;
+    color: #212529;
+    vertical-align: top;
+    border-color: #dee2e6;
+    table-layout: auto;
+}
+
+table.dataTable {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+thead {
+    vertical-align: bottom;
+}
+
+td {
     padding-top: 5px;
     padding-bottom: 5px;
+    vertical-align: middle;
 }
 
-input {
-    outline: none;
-    border: none;
-    padding: 5px;
-    margin: 10px;
+tr {
+    vertical-align: middle;
 }
 
-.calcBtn {
-    color: white;
-    padding: 10px;
-    border: 2px solid white;
-    background: black;
-    display: block;
-    margin-top: 10%;
-    cursor: pointer;
+td, th {
+    padding-left: 10px;
+    padding-right: 10px;
+    border: solid;
+    border-color: rgb(200, 200, 200);
+    border-width: 0px;
+    border-bottom-width: 1px;
+}
+
+tr *.text-field {
+    text-align: left;
+}
+
+tr *.number-field {
+    text-align: right;
 }
 
 .table-name {
@@ -160,29 +169,3 @@ input {
     font-size: 2em;
     font-weight: bold;
 }
-
-.historyTable {
-    color: white;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 25px;
-    padding: 2px;
-    width: 70%;
-    height: 20%;
-    background-color: rgb(43, 46, 46);
-    padding: 15px;
-    font-size: 1em;
-    border-radius: 10px;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    line-height: 70px;
-}
-
-    .historyTable thead tr {
-        background-color: rgb(43, 46, 46);
-        color: white;
-        text-align: left;
-    }
-
-    .historyTable tbody {
-        border: 1px white;
-    }
