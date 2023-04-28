@@ -10,16 +10,20 @@
                 <th class="number-field" scope="col", tabindex="0", rowspan="1", colspan="1">Total Amount Due</th>
             </tr>
             <tr> 
-                <td class="text-field">{{ fuel_quote.delivery_date }}</td>
+                <td class="text-field">{{ request.session.fuel_quote_delivery_date }}</td>
                 <td class="text-field">
-                    <p>{{ fuel_quote.address1 }}</p>
-                    <p>{{ fuel_quote.address2 }}</p>
-                    <p>{{ fuel_quote.city }}, {{ fuel_quote.state }} {{ fuel_quote.zipcode }}</p>
+                    <p>{{ request.session.fuel_quote_address1 }}</p>
+                    <p>{{ request.session.fuel_quote_address2 }}</p>
+                    <p>{{ request.session.fuel_quote_city }}, {{ request.session.fuel_quote_state }} {{ request.session.fuel_quote_zipcode }}</p>
                 </td>
-                <td class="number-field">{{ fuel_quote.gallons_requested }}</td>
-                <td class="number-field">${{ fuel_quote.price_rate }}</td>
-                <td class="number-field">${{ fuel_quote.total_due }}</td>
+                <td class="number-field">{{ request.session.fuel_quote_gallons_requested }}</td>
+                <td class="number-field">${{ request.session.fuel_quote_price_rate }}</td>
+                <td class="number-field">${{ request.session.fuel_quote_total_due }}</td>
             </tr>
         </thead>
     </table>
+    <form method="post" class="form-wrapper">
+        {% csrf_token %}
+        <button type="submit">Submit Quote</button>
+    </form>
 {% endblock content %}

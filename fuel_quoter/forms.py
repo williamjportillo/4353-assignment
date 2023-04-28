@@ -21,9 +21,9 @@ def validate_min_gallons(value):
         )
     
 def validate_max_gallons(value):
-    if value > 1000:
+    if value > 100000:
         raise ValidationError(
-            _('Cannot request more than 1000 gallons of fuel'),
+            _('Cannot request more than 100000 gallons of fuel'),
             params={'value': value},
         )
 

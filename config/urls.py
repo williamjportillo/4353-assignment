@@ -22,7 +22,7 @@ from authentication.views import SignUpView, LoginView
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
-    path('quote/<int:quote_id>', QuoteView.as_view(), name='quote'),
+    path('quote/', QuoteView.as_view(), name='quote'),
     path('quote_history/', QuoteHistoryView.as_view(), name='quote_history'),
     path('profile/', ManageProfileView.as_view(), name='profile'),
     path('signup/', SignUpView.as_view(), name='signup'),
