@@ -1,3 +1,5 @@
+import datetime
+
 from django import forms
 from django.contrib.auth.forms import UserChangeForm
 from django.core.exceptions import ValidationError
@@ -5,21 +7,25 @@ from django.utils.translation import gettext_lazy as _
 from .models import FuelQuote
 from authentication.models import User
 from .static.choices import STATE_CODES
+from datetime import date
+
 
 def validate_positive(value):
-    if value < 0:
+    if value <= 0:
         raise ValidationError(
             _('%(value)s is not a positive number'),
             params={'value': value},
         )
-    
+
+
 def validate_min_gallons(value):
     if value < 10:
         raise ValidationError(
             _('Must request at least 10 gallons of fuel'),
             params={'value': value},
         )
-    
+
+
 def validate_max_gallons(value):
     if value > 100000:
         raise ValidationError(
@@ -27,7 +33,15 @@ def validate_max_gallons(value):
             params={'value': value},
         )
 
+
+def validate_date(value):
+    today = datetime.date.today()
+    if value < today:
+        raise ValidationError(_('Delivery date must be in the future.'))
+
+
 fuel_validators = [validate_positive, validate_min_gallons, validate_max_gallons]
+
 
 class FuelQuoteForm(forms.ModelForm):
     class Meta:
@@ -36,6 +50,10 @@ class FuelQuoteForm(forms.ModelForm):
         widgets = {
             'delivery_date': forms.DateInput(attrs={'type': 'date'})
         }
+
+    gallons_requested = forms.DecimalField(validators=fuel_validators)
+    delivery_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), validators=[validate_date])
+
 
 class ManageProfileForm(forms.ModelForm):
     email = None
@@ -47,12 +65,10 @@ class ManageProfileForm(forms.ModelForm):
     city = forms.CharField(max_length=50, required=True)
     state = forms.CharField(max_length=2, required=True)
     zipcode = forms.CharField(max_length=10, required=True)
+
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'address1', 'address2', 'city', 'state', 'zipcode']
         widgets = {
             'state': forms.Select(attrs={'choices': STATE_CODES})
         }
-
-
-        

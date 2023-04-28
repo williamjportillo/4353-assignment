@@ -6,7 +6,6 @@ from .models import FuelQuote
 
 
 class HomeView(View):
-
     template_name = 'base.html'
     form_class = FuelQuoteForm
 
@@ -27,7 +26,7 @@ class HomeView(View):
         elif not all([user.address1, user.city, user.state, user.zipcode]):
             messages.error(request, 'User must first complete their profile.')
             return render(request, self.template_name, context={'form': fuel_quote})
-    
+
         request.session['fuel_quote_user_id'] = user.id
         request.session['fuel_quote_gallons_requested'] = format(float(data.get('gallons_requested')), ',.2f')
         request.session['fuel_quote_delivery_date'] = data.get('delivery_date')
@@ -50,13 +49,12 @@ class HomeView(View):
 
 
 class QuoteView(View):
-    
     template_name = 'quote.html'
     form_class = FuelQuoteForm
 
     def get(self, request):
         return render(request, self.template_name)
-    
+
     def post(self, request):
         fuel_quote = self.form_class()
         fuel_quote = fuel_quote.save(commit=False)
@@ -73,11 +71,10 @@ class QuoteView(View):
         fuel_quote.save()
         return redirect('quote_history')
 
- 
+
 class QuoteHistoryView(View):
-    
     template_name = 'quote_history.html'
-    
+
     def get(self, request):
         fuel_quotes = FuelQuote.objects.filter(user_id=request.user.id).order_by('delivery_date')
         for fuel_quote in fuel_quotes:
@@ -87,16 +84,14 @@ class QuoteHistoryView(View):
         return render(request, self.template_name, context={'fuel_quotes': fuel_quotes})
 
 
-
 class ManageProfileView(View):
-
     template_name = 'profile.html'
     form_class = ManageProfileForm
 
     def get(self, request):
         form = self.form_class(instance=request.user)
         return render(request, self.template_name, context={'form': form})
-    
+
     def post(self, request):
         form = self.form_class(request.POST, instance=request.user)
         if not form.is_valid():
@@ -105,4 +100,3 @@ class ManageProfileView(View):
             form.save()
             messages.success(request, 'Your profile has updated successfully!')
         return render(request, self.template_name, context={'form': form})
-
